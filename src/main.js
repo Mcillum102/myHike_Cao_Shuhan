@@ -92,13 +92,16 @@ async function displayCardsDynamically() {
             // Clone the template
             let newcard = cardTemplate.content.cloneNode(true);
             // Get hike data once
-            const hike = doc.data(); 
+            const hike = doc.data();
 
             // Populate the card with hike data
             newcard.querySelector('.card-title').textContent = hike.name;
             newcard.querySelector('.card-text').textContent = hike.details || `Located in ${hike.city}.`;
             newcard.querySelector('.card-length').textContent = hike.length;
             newcard.querySelector('.card-image').src = `./images/${hike.code}.jpg`;
+            
+            // Add the link with the document ID
+            newcard.querySelector(".read-more").href = `eachHike.html?docID=${doc.id}`;
 
             // Attach the new card to the container
             document.getElementById("hikes-go-here").appendChild(newcard);
