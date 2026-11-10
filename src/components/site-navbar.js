@@ -14,7 +14,7 @@ class SiteNavbar extends HTMLElement {
             <!-- Navbar: single source of truth -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-success">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="/main.html">
                         <img src="/src/images/SafeLink_Logo.png" height="36">
                         Safe Link
                     </a>
@@ -25,10 +25,10 @@ class SiteNavbar extends HTMLElement {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="/">Home</a>
+                                <a class="nav-link" href="/main.html">Home</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="/addHike.html">Add hike</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/eachHike.html">Each hike</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/profile.html">Profile</a></li>
                         </ul>
                         <div class="d-flex align-items-center gap-2 ms-lg-2" id="rightControls">
                             <form class="d-flex align-items-center gap-2 my-2 my-lg-0" id="navSearch" role="search">
