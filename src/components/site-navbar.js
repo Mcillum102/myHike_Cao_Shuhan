@@ -15,7 +15,7 @@ class SiteNavbar extends HTMLElement {
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/main.html">
-                        <img src="/src/images/SafeLink_Logo.png" height="36">
+                        <img src="/images/SafeLink_Logo.png" height="36">
                         Safe Link
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
