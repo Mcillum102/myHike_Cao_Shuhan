@@ -53,10 +53,10 @@ function readQuote(day) {
 }
 
 // Helper function to add the sample hike documents.
-function addHikeData() {
+async function addHikeData() {
   const hikesRef = collection(db, "hikes");
   console.log("Adding sample hike data...");
-  addDoc(hikesRef, {
+  await addDoc(hikesRef, {
     code: "BBY01",
     name: "Burnaby Lake Park Trail",
     city: "Burnaby",
@@ -68,7 +68,7 @@ function addHikeData() {
     lng: -122.9187029619698,
     last_updated: serverTimestamp(),
   });
-  addDoc(hikesRef, {
+  await addDoc(hikesRef, {
     code: "AM01",
     name: "Buntzen Lake Trail",
     city: "Anmore",
@@ -80,7 +80,7 @@ function addHikeData() {
     lng: -122.85908496766939,
     last_updated: serverTimestamp(),
   });
-  addDoc(hikesRef, {
+  await addDoc(hikesRef, {
     code: "NV01",
     name: "Mount Seymour Trail",
     city: "North Vancouver",
@@ -107,7 +107,7 @@ async function seedHikes() {
     console.log("Hikes collection is empty. Seeding data...");
 
     // Call function to insert default hike documents
-    addHikeData();
+    await addHikeData();
   } else {
     // If documents already exist, do not reseed
     console.log("Hikes collection already contains data. Skipping seed.");
@@ -214,11 +214,16 @@ onAuthReady(async function (user) {
     //   favourites = [];
     // }
 
-    displayCardsDynamically(); // 4. Draw the cards
+    // 4. Make sure the sample hikes exist (waits for the writes).
+    //    A seeding error must not stop the cards from being drawn.
+    try {
+      await seedHikes();
+    } catch (error) {
+      console.error("Could not seed sample hikes: ", error);
+    }
+    displayCardsDynamically(); // 5. Draw the cards
   }
 });
 
-// Call the seeding function when the main.html page loads.
-seedHikes();
 readQuote("tuesday");
 showName();
